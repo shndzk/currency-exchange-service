@@ -10,4 +10,5 @@ public interface CurrencyMapper {
     CurrencyDto convertToDto(Currency currency);
 
     Currency convertToEntity(CurrencyDto currencyDto);
+
 }
