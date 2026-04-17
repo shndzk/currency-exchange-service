@@ -2,17 +2,23 @@ server:
   port: 8080
 
 spring:
+  # Настройка для корректной работы Swagger UI в Spring Boot 2.7+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
   liquibase:
     enabled: true
-    drop-first: true
+    drop-first: false
     default-schema: public
-    change-log: classpath:db/changelog_init.xml
+    change-log: classpath:db/changelog.yaml
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5433/postgres
     username: postgres
     password: postgres
+
   jpa:
     properties:
       hibernate:
@@ -21,3 +27,7 @@ spring:
         hbm2ddl:
           auto: none
 
+# Настройки интеграции с Центробанком
+cbr:
+  url: https://cbr.ru/scripts/XML_daily.asp
+  update-interval: 3600000

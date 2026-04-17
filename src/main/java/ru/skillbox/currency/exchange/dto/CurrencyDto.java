@@ -1,9 +1,7 @@
 package ru.skillbox.currency.exchange.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -19,4 +17,7 @@ public class CurrencyDto {
     private Double value;
 
     private Long isoNumCode;
+
+    @Size(min = 3, max = 3, message = "ISO Char Code must be exactly 3 characters (e.g. USD)")
+    private String isoCharCode;
 }
