@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: shndzk
+      changes:
+        - createSequence:
+            sequenceName: create_sequence
+            startValue: 1
+            incrementBy: 1
+  - changeSet:
+      id: 2
+      author: shndzk
+      changes:
+        - createTable:
+            tableName: currency
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: nominal
+                  type: bigint
+              - column:
+                  name: value
+                  type: numeric(19,5)
+              - column:
+                  name: iso_num_code
+                  type: bigint
+              - column:
+                  name: iso_char_code
+                  type: varchar(3)
+  - changeSet:
+      id: 3
+      author: shndzk
+      changes:
+        - insert:
+            tableName: currency
+            columns:
+              - column: { name: id, value: 1333 }
+              - column: { name: name, value: "Доллар США" }
+              - column: { name: nominal, value: 1 }
+              - column: { name: value, value: 93.5224 }
+              - column: { name: iso_num_code, value: 840 }
+              - column: { name: iso_char_code, value: "USD" }
